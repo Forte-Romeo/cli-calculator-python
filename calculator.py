@@ -1,6 +1,6 @@
 # Building a CLI calculator on Python based on the concepts learnt: Variables, Loops, Functions
 
-#Defining all functions for this project (addition, subtraction, multiplication, and division)
+#Defining all functions for this project (addition, subtraction, multiplication, division, and exponent)
 # Define a function to add two numbers
 def add(a, b):
      return a + b
@@ -22,6 +22,10 @@ def divide(a, b):
           return None
      return result
 
+# Define a function to find exponent of a number
+def exponent(a, b):
+     return a ** b
+
 #Main dashboard function to handle user inputs and call required functions
 def main():
      #Main Menu
@@ -31,11 +35,12 @@ def main():
           print("2. Subtract")
           print("3. Multiply")
           print("4. Divide")
-          print("5. Exit")
+          print("5. Exponent")
+          print("6. Exit")
 
           choice = input("Enter your choice: ")
 
-          if choice == '5':
+          if choice == '6':
                print("Exiting Calculator.")
                break
           
@@ -63,6 +68,8 @@ def main():
                result = multiply(num1, num2)
           elif choice == '4':
                result = divide(num1, num2)
+          elif choice == '5':
+               result = exponent(num1, num2)
 
           if result is not None:
                print(f"Result: {result}")
