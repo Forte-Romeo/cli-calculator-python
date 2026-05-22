@@ -11,7 +11,9 @@ It performs basic arithmetic operations directly from the terminal.
 - Subtraction (-)
 - Multiplication (*)
 - Division (/)
+- Exponent/Power (**)
 - Continuous usage in terminal
+- Error handling (division by zero, invalid input)
 - Beginner-friendly CLI interface
 
 ---
@@ -39,11 +41,12 @@ python3 calculator.py
 ## ▶️ How to Use
 
 When you run the program, you will be prompted to:
-- Choose an operator choice (+, -, *, /)
+- Choose an operator choice (+, -, *, /, **)
      - Addition (#1)
      - Subtraction (#2)
      - Multiplication (#3)
      - Division (#4)
+     - Exponent (#5)
 - Enter the first number
 - Enter the second number
 
@@ -61,7 +64,8 @@ Example:
 This project handles:
 - Division by zero
 - Invalid operators
-- Non-numeric inputs (optional improvement)
+- Non-numeric inputs
+
 
 
 ---
@@ -71,6 +75,7 @@ This project handles:
 <img width="288" height="176" alt="Screenshot 2026-05-18 143146" src="https://github.com/user-attachments/assets/1820eaca-4136-4422-8180-0f5d7a5d9088" />
 <img width="275" height="177" alt="Screenshot 2026-05-18 143308" src="https://github.com/user-attachments/assets/31d70e49-ee40-4334-8e49-50283f637962" />
 <img width="325" height="183" alt="Screenshot 2026-05-18 143244" src="https://github.com/user-attachments/assets/4021767e-1717-4178-ada9-b9ec5a806487" />
+<img width="255" height="196" alt="Screenshot 2026-05-22 123207" src="https://github.com/user-attachments/assets/1c0ad49e-e8bc-412a-8464-b699a25ba7b8" />
 
 ---
 
@@ -93,8 +98,7 @@ This project handles:
 ---
 
 ## 🔮 Future Improvements
-- Add power (^) and modulus (%) operations
-- Add error handling (division by zero, invalid input)
+- Add modulus (%) operations
 - Create a loop for continuous calculations
 - Build a GUI version using Tkinter
 - Add history tracking
