@@ -15,12 +15,11 @@ def multiply(a, b):
 
 # Define a function to divide two numbers (with error handling)
 def divide(a, b):
-     try:
-          result = a / b
-     except ZeroDivisionError:
+
+     if b == 0:
           print("Invalid: Division by zero is not allowed.")
           return None
-     return result
+     return a / b
 
 # Define a function to find exponent of a number
 def exponent(a, b):
@@ -30,11 +29,24 @@ def exponent(a, b):
 def modulus(a, b):
      return a % b
 
+     
 #Main dashboard function to handle user inputs and call required functions
 def main():
+
+     #Choosing your prefered operation
+     operations = {
+          '1': add,
+          '2': subtract,
+          '3': multiply,
+          '4': divide,
+          '5': exponent,
+          '6': modulus
+     }
+
      #Main Menu
      while True:
-          print("\nCalculator Menu:")
+          print("\n===== CLI CALCULATOR =====")
+          print("\n===== Menu: =====")
           print("1. Add")
           print("2. Subtract")
           print("3. Multiply")
@@ -45,11 +57,17 @@ def main():
 
           choice = input("Enter your choice: ")
 
+          # EXIT
           if choice == '7':
                print("Exiting Calculator.")
                break
+
+          # INVALID CHOICE
+          if choice not in operations:
+               print("Invalid choice.")
+               continue
           
-          #User inputs
+          #First number input
           while True:
                try:
                     num1 = float(input("Enter your first number: "))
@@ -57,29 +75,56 @@ def main():
                except ValueError:
                     print("Error: Invalid input. Please enter a valid number")
 
+          # CONTINUOUS CALCULATION LOOP
           while True:
-               try:
-                    num2 = float(input("Enter your second number: "))
+
+               #Second number input
+               while True:
+                    try:
+                         num2 = float(input("Enter your second number: "))
+                         break
+                    except ValueError:
+                         print("Error: Invalid input. Please enter a valid number")
+
+               # Select function directly
+               operation = operations[choice]
+
+               # Calculate result
+               result = operation(num1, num2)
+
+               # Handle Failed Calculations
+               if result is None:
+                    print("Calculation failed.")
+               else:
+                    print(f"\nResult: {result}")
+
+                    # Store result
+                    num1 = result
+
+               # Ask user if they want to continue
+               continue_choice = input("\nDo you want to continue calculating with this result? (yes/no): ").lower()
+
+               if continue_choice != "yes":
+                    print("Returning to main menu...")
                     break
-               except ValueError:
-                    print("Error: Invalid input. Please enter a valid number")
+               
+               # Ask for new operation
+               print("\nChoose next operation:")
+               print("1. Add")
+               print("2. Subtract")
+               print("3. Multiply")
+               print("4. Divide")
+               print("5. Exponent")
+               print("6. Modulus")
+          
+               while True:
+                    choice = input("Enter your choice: ")
+                    if choice in operations:
+                         break
+                    else:
+                         print("Invalid choice. Please select a valid option.")
 
-          #Perform the selected operation and displaying the result
-          if choice == '1':
-               result = add(num1, num2)
-          elif choice == '2':
-               result = subtract(num1, num2)
-          elif choice == '3':
-               result = multiply(num1, num2)
-          elif choice == '4':
-               result = divide(num1, num2)
-          elif choice == '5':
-               result = exponent(num1, num2)
-          elif choice == '6':
-               result = modulus(num1, num2)
 
-          if result is not None:
-               print(f"Result: {result}")
-
+# Run Program
 if __name__ == "__main__":
      main()
